@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Wentworth Interactive Map</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <a href="Main Page.html"><img src="Images/Logo.png" alt="logo" title="Home" /></a>
+    </header>
+
+    <main>
+        <section>
+            <!--––----------------------------- Left portion of flex box: Search bar ––------------------------------->
+            <div id="search">
+                <form>
+                    <input type="search" placeholder="Search" />
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+                <form>
+                    <!-- Function to show/hide filtered building -->
+                    <script>
+                        var firstClick = true;
+                        function show(idImg, idBtn) {
+                            if (firstClick) {
+                                document.getElementById(idImg).style.visibility = 'visible';
+                                document.getElementById(idBtn).className = 'click';
+                                firstClick = false;
+                            }
+                            else {
+                                document.getElementById(idImg).style.visibility = 'hidden';
+                                document.getElementById(idBtn).className = 'default';
+                                firstClick = true;
+                            }
+                        }
+                    </script>
+                    <!-- Building Filter Buttons -->
+                    <button type="button" id="AnnexBtn" class="default" onclick="show('AnnexImg', 'AnnexBtn')">Annex</button>
+                    <button type="button" class="default" id="BeattyBtn" onclick="show('BeattyImg', 'BeattyBtn')">Beatty Hall</button>
+                    <button type="button" class="default" id="CEISBtn" onclick="show('CEISImg', 'CEISBtn')">CEIS Building</button>
+                    <button type="button" class="default" id="DobbsBtn" onclick="show('DobbsImg','DobbsBtn')">Dobbs Hall</button>
+                    <button type="button" class="default" id="IraBtn" onclick="show('IraImg','IraBtn')">Ira Allen</button>
+                    <button type="button" class="default" id="KingBtn" onclick="show('KingImg','KingBtn')">Kingman Hall</button>
+                    <button type="button" class="default" id="RubenBtn" onclick="show('RubenImg','RubenBtn')">Rubenstein Hall</button>
+                    <button type="button" class="default" id="WatsonBtn" onclick="show('WatsonImg','WatsonBtn')">Watson Hall</button>
+                    <button type="button" class="default" id="WentworthBtn" onclick="show('WentworthImg','WentworthBtn')">Wentworth Hall</button>
+                    <button type="button" class="default" id="WillisBtn" onclick="show('WillisImg','WillisBtn')">Williston Hall</button>
+                </form>
+            </div>
+            <!--––----------------------------- Center of flex box: Main Map ––------------------------------->
+            <div id="map">
+                <div id="outer">
+                    <div id="inner">
+                        <!-- Overview Map -->
+                        <img src="Images/Map.jpg" alt="map" id="campusMap" />
+
+                        <!-- Building Overlays -->
+                        <img src="Images/MapOverlay.png" id="AnnexImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="BeattyImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="CEISImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="DobbsImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="IraImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="KingImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="RubenImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="WatsonImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="TanseyImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="WentworthImg" class="overlay" />
+                        <img src="Images/MapOverlay.png" id="WillisImg" class="overlay" />
+
+                        <!-- Point of Interest Icons -->
+                        <img src="Images/Column.png" id="audiA" class="audiIcn" />
+                        <img src="Images/Column.png" id="audiB" class="audiIcn" />
+                        <img src="Images/Column.png" id="audiC" class="audiIcn" />
+                        <img src="Images/Food.png" id="foodA" class="foodIcn" />
+                        <img src="Images/Food.png" id="foodB" class="foodIcn" />
+                        <img src="Images/Gym.png" id="gymA" class="gymIcn" />
+                        <img src="Images/Gym.png" id="gymB" class="gymIcn" />
+                        <img src="Images/Gym.png" id="gymC" class="gymIcn" />
+                        <img src="Images/Book.png" id="lib" class="libIcn" />
+                        <img src="Images/Parking.png" id="parkA" class="parkIcn" />
+                        <img src="Images/Parking.png" id="parkB" class="parkIcn" />
+                        <img src="Images/Parking.png" id="parkC" class="parkIcn" />
+                    </div>
+                </div>
+
+            </div>
+            <!--––----------------------------- Right portion of flex box: Legend ––------------------------------->
+            <div id="legend">
+                <h1>Legend</h1>
+                <!-- Table of point of interest icons with labels -->
+                <table>
+                    <tr>
+                        <td><img src="Images/Column.png" class="icon" /></td>
+                        <td><a id="audiLnk" onclick="showAll('audiIcn', 'audiLnk')">Auditorium</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="Images/Food.png" class="icon" /></td>
+                        <td><a id="foodLnk" onclick="showAll('foodIcn','foodLnk')">Dining Services</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="Images/Gym.png" class="icon" /></td>
+                        <td><a id="gymLnk" onclick="showAll('gymIcn','gymLnk')">Gym</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="Images/Book.png" class="icon" /></td>
+                        <td><a id="libLnk" onclick="showAll('libIcn','libLnk')">Library</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="Images/Parking.png" class="icon" /></td>
+                        <td><a id="parkLnk" onclick="showAll('parkIcn','parkLnk')">Parking</a></td>
+                    </tr>
+                </table>
+                <!-- Function to show/hide selected point of interest icon -->
+                <script>
+                    var on = true;
+                    function showAll(classIcn, idLnk) {
+                        var all = document.getElementsByClassName(classIcn);
+                        for (var i = 0; i < all.length; i++) {
+                            if (on) {
+                                all[i].style.visibility = 'visible';
+                                document.getElementById(idLnk).style.color = 'white';
+                                document.getElementById(idLnk).style.backgroundColor = 'rgba(192,0,0,1)';
+                            }
+                            else {
+                                all[i].style.visibility = 'hidden';
+
+                                document.getElementById(idLnk).style.color = 'black';
+                                document.getElementById(idLnk).style.backgroundColor = 'white';
+                            }
+                        }
+
+                        on = on ? false : true;
+                    }
+                </script>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- External Links to Provide More Information -->
+        <ul>
+            <li><a href="https://wit.edu/" target="_blank">About</a></li>
+            <li><a href="#directions" target="_blank">Directions</a></li>
+            <li><a href="#parking" target="_blank">Parking</a></li>
+            <li><a href="#contact" target="_blank">Contact</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
